@@ -270,6 +270,8 @@ def write_validation_output():
     template_lines = template_lines.replace('{{' + "MAX_LINES_PER_METHOD" + '}}', str(MAX_LINES_PER_METHOD))
 
     path_to_output_storage = directory + "/code_validation_output/"
+    if not os.path.exists(path_to_output_storage):
+        os.mkdir(path_to_output_storage)
     path_to_output_md_file = path_to_output_storage + "/{}_validation_output.md".format(template_variables["SCRIPT_NAME"])
     with open(path_to_output_md_file, 'w') as output_file:
         output_file.write(template_lines)
